@@ -14,7 +14,6 @@
 void print_ip_header(struct iphdr *ip_header);
 void print_tcp_header(struct tcphdr *tcp_header);
 void print_ipv4_address(int ip);
-void zero_tcp_flags(struct tcphdr *tcp_header);
 unsigned short calc_ipv4_check(unsigned short *buffPointer, int buffLen);
  
 int main (int argc, char* argv[])
@@ -112,17 +111,6 @@ unsigned short calc_ipv4_check(unsigned short *buffPointer, int buffLen)
  
         sum = ~sum;
         return (unsigned short) sum;
-}
- 
-void zero_tcp_flags(struct tcphdr *tcp_header)
-{
-        tcp_header->urg = 0;
-        tcp_header->ack = 0;
-        tcp_header->psh = 0;
-        tcp_header->rst = 0;
-        tcp_header->syn = 0;
-        tcp_header->fin = 0;
-        return;
 }
  
 void print_ip_header(struct iphdr *ip_header)
